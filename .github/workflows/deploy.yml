@@ -39,6 +39,11 @@ jobs:
           VITE_TMDB_READ_ACCESS_TOKEN: ${{ secrets.VITE_TMDB_READ_ACCESS_TOKEN }}
         run: npm run build
 
+      # GitHub Pages serves this file for direct React Router URLs.
+      # Keep the requested path so BrowserRouter can render the matching route.
+      - name: Add SPA fallback for direct links
+        run: cp dist/index.html dist/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
