@@ -43,16 +43,16 @@ function MovieResults({ query, sort, order }: { query: string; sort: SortPropert
   useEffect(() => {
     const controller = new AbortController()
     async function loadMovies() {
-      const collection: Movie[] = []
+      const collection = new Map<number, Movie>()
       let totalPages = 1
-      for (let page = 1; page <= totalPages && collection.length < MOVIE_LIMIT; page += 1) {
+      for (let page = 1; page <= totalPages && collection.size < MOVIE_LIMIT; page += 1) {
         const data = await getMovies('', page, controller.signal)
         if (controller.signal.aborted) return []
-        collection.push(...data.results)
+        data.results.forEach(movie => collection.set(movie.id, movie))
         totalPages = data.total_pages
         if (!data.results.length) break
       }
-      return collection.slice(0, MOVIE_LIMIT)
+      return [...collection.values()].slice(0, MOVIE_LIMIT)
     }
     loadMovies().then(results => {
       if (controller.signal.aborted) return
