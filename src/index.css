@@ -1,0 +1,14 @@
+:root { font-family: Inter, system-ui, sans-serif; color: #e9edf5; background: #10151f; font-synthesis: none; text-rendering: optimizeLegibility; line-height: 1.6; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+a { color: #a9c8ff; }
+button, input, select { font: inherit; }
+button, .button { background: #a9c8ff; color: #10151f; border: 1px solid transparent; border-radius: 8px; padding: .65rem 1.1rem; cursor: pointer; font-weight: 650; text-decoration: none; }
+button:hover, .button:hover { background: #c6daff; }
+button:disabled { cursor: default; opacity: .4; }
+:focus-visible { outline: 3px solid #f4c979; outline-offset: 4px; }
+h1, h2, h3 { line-height: 1.2; }
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.04em; margin: .6rem 0 1rem; }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.25rem; margin: 0 0 .5rem; }
+code { overflow-wrap: anywhere; }
